@@ -40,7 +40,7 @@ $password = password_hash($password, PASSWORD_DEFAULT);
 
 //tambah user baru ke db
 
-$sql="INSERT INTO user VALUES('', '$username', '$password', '$level', '$input_dt', '$update_dt')";
+$sql="INSERT INTO user (username,password, level, input_dt, update_dt) VALUES ('$username', '$password', '$level', '$input_dt', '$update_dt')";
 $query= mysqli_query($con,$sql);
 $lastId = mysqli_insert_id($con);
 
