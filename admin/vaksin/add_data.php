@@ -1,5 +1,8 @@
 <?php 
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $vaksin = $_POST['vaksin'];
 $input_dt = date("Y-m-d H:i:s");
