@@ -28,6 +28,9 @@
 
 
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $jenis = $_POST['jenis'];
 $keterangan = $_POST['keterangan'];
@@ -39,10 +42,10 @@ $query= mysqli_query($con,$sql);
 $lastId = mysqli_insert_id($con);
 if($query ==true)
 {
-   
+    $history->add_data('ADD JENIS DATA', $_COOKIE['id_user']);
     $data = array(
-        'status'=>'true',
-       
+        'status'=>true,
+        'msg'=> 'Berhasil Tambah Jenis Data'
     );
 
     echo json_encode($data);
@@ -50,7 +53,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
+        'status'=>false,
+        'msg'=> 'Gagal Tambah Jenis Data'
       
     );
 

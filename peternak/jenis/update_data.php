@@ -17,9 +17,10 @@ if($query ==true)
 {
     $history->add_data('UPDATE JENIS DATA', $_COOKIE['id_user']);
     $data = array(
-        'status'=>'true',
+        'status'=>true,
         'jenis'=>$jenis,
-        'keterangan'=>$keterangan
+        'keterangan'=>$keterangan,
+        'msg'=> 'Berhasil Update Jenis Data'
     );
 
     echo json_encode($data);
@@ -27,7 +28,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
+        'status'=>false,
+        'msg'=> 'Gagal Update Jenis Data'
       
     );
 

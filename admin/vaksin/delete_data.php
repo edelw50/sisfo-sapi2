@@ -1,5 +1,8 @@
 <?php 
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $id_vaksin = $_POST['id'];
 $sql = "DELETE FROM vaksin WHERE id_vaksin='$id_vaksin'";

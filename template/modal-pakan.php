@@ -2,12 +2,8 @@
  <div class="modal fade" id="updatePakan" tabindex="-1" aria-labelledby="updatePakanLabel" aria-hidden="true">
      <div class="modal-dialog">
          <div class="modal-content">
-             <div class="alert alert-true d-none alert-success" role="alert">
-
-             </div>
-             <div class="alert alert-false d-none alert-danger" role="alert">
-
-             </div>
+            <div class="alert alert-true d-none alert-success" role="alert"></div>
+            <div class="alert alert-false d-none alert-danger" role="alert"></div>
              <div class="modal-header">
                  <h5 class="modal-title" id="updatePakanLabel">Update Pakan Sapi</h5>
                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

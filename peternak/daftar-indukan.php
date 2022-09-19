@@ -276,6 +276,7 @@ if(isset($_POST["generate-qr"]) ){
             if (status == 'success') {
               $("#" + id).closest('tr').remove();
               $("#" + id_sapi).closest('tr').remove();
+              table.draw();
             } else {
               alert('Failed');
               return;

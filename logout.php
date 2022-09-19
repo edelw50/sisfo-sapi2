@@ -8,5 +8,9 @@ session_destroy();
 setcookie('id','', time()-3600);
 setcookie('key','', time()-3600);
 
+foreach($_COOKIE as $key => $value){
+    setcookie($key, $value, time()-3600);
+}
+
 header("Location: login.php");
 ?>

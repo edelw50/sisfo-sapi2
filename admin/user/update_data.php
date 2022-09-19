@@ -1,5 +1,11 @@
-<?php 
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $id = $_POST['id'];
 $username = strtolower(stripslashes($_POST["usernameEdit"]));
@@ -38,9 +44,10 @@ $query= mysqli_query($con,$sql);
 $lastId = mysqli_insert_id($con);
 if($query ==true)
 {
-   
+    $history->add_data('UPDATE USER DATA', $_COOKIE['id_user']);
     $data = array(
-        'status'=>'true',
+        'status'=>true,
+        'msg'=> 'Berhasil Update User Data'
     );
 
     echo json_encode($data);
@@ -48,7 +55,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
+        'status'=>false,
+        'msg'=> 'Gagal Update Vaksin Data'
       
     );
 

@@ -54,7 +54,7 @@ while($row = mysqli_fetch_assoc($query))
 	$sub_array[] = $row['password'];
 	$sub_array[] = $row['input_dt'];
     $sub_array[] = $row['update_dt'];
-	$sub_array[] = '<a href="javascript:void();" data-id="'.$row['id_user'].'"  class="btn btn-info btn-sm editbtn" >Edit</a>  <a href="javascript:void();" data-id="'.$row['id_user'].'"  class="btn btn-danger btn-sm deleteBtn" onclick="javascript:window.location.reload()" >Delete</a>';
+	$sub_array[] = '<a href="javascript:void();" data-id="'.$row['id_user'].'"  class="btn btn-info btn-sm editbtn" >Edit</a>  <a href="javascript:void();" data-id="'.$row['id_user'].'"  class="btn btn-danger btn-sm deleteBtn" >Delete</a>';
 	$data[] = $sub_array;
 }
 

@@ -16,7 +16,8 @@ if($query ==true)
 {
     $history->add_data('ADD DATA JENIS', $_COOKIE['id_user']);
     $data = array(
-        'status'=>'true',
+        'status'=>true,
+        'msg'=> 'Berhasil Tambah Jenis Data'
        
     );
 
@@ -25,7 +26,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
+        'status'=>false,
+        'msg'=> 'Gagal Tambah Jenis Data'
       
     );
 

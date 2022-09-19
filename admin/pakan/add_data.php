@@ -1,33 +1,9 @@
 <?php 
-// include('../functions.php');
-
-
-
-// if(isset($_POST["addJenis"])){
-
-//     if(addJenis($_POST)>0){
-//         echo "
-//             <script> 
-//                 alert('Jenis sapi baru berhasil ditambahkan!');
-//             </script>
-//         ";
-//         $data = array(
-//             'status'=>'true',
-//         );
-    
-//         echo json_encode($data);
-//     }else{
-//         $data = array(
-//             'status'=>'false',
-          
-//         );
-//         echo json_encode($data);
-//         echo mysqli_error($conn);
-//     }
-// }
-
 
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 date_default_timezone_set('Asia/Jakarta');
 
 $pakan = $_POST['pakan'];
@@ -39,9 +15,10 @@ $query= mysqli_query($con,$sql);
 $lastId = mysqli_insert_id($con);
 if($query ==true)
 {
-   
+    $history->add_data('ADD PAKAN DATA', $_COOKIE['id_user']);
     $data = array(
-        'status'=>'true',
+        'status'=>true,
+        'msg'=> 'Berhasil Tambah Pakan Data'
        
     );
 
@@ -50,8 +27,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
-      
+        'status'=>false,
+        'msg'=> 'Gagal Tambah Pakan Data'
     );
 
     echo json_encode($data);

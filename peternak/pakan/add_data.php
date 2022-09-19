@@ -44,7 +44,8 @@ if($query ==true)
 {
     $history->add_data('ADD PAKAN DATA', $_COOKIE['id_user']);
     $data = array(
-        'status'=>'true',
+        'status'=>true,
+        'msg'=> 'Berhasil Tambah Pakan Data'
        
     );
 
@@ -53,7 +54,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
+        'status'=>false,
+        'msg'=> 'Gagal Tambah Pakan Data'
       
     );
 

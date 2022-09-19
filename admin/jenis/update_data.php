@@ -1,5 +1,11 @@
-<?php 
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $id = $_POST['id'];
 $jenis = $_POST['jenis'];

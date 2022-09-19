@@ -46,7 +46,7 @@ if(isset($_POST["login"])){
             $_SESSION['id_user'] = $row['id_user'];
             $_SESSION['username'] = $row['username'];
             $_SESSION['level'] = $row['level'];
-
+            
             setcookie('id_user', $row['id_user'], time()+3600);
 
             //cek remember me
@@ -58,12 +58,16 @@ if(isset($_POST["login"])){
 
             }
 
+
             //cek level
             if($row["level"] == 'Admin'){
                 header("location:page.php?admin-home");
             } else {
                 header("location:page.php?peternak-home");
             }
+        }else{
+          echo "ngga masuk";
+          exit();
         }
     }
 

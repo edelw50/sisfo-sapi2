@@ -1,6 +1,9 @@
 <?php 
 
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $username = strtolower(stripslashes($_POST["usernameAdd"]));
 $password = mysqli_real_escape_string($con, $_POST["passwordAdd1"]);
@@ -43,10 +46,10 @@ $lastId = mysqli_insert_id($con);
 
 if($query ==true)
 {
-   
+    $history->add_data('ADD USER DATA', $_COOKIE['id_user']);
     $data = array(
-        'status'=>'true',
-       
+        'status'=>true,
+        'msg'=> 'Berhasil Tambah User Data'
     );
 
     echo json_encode($data);
@@ -54,7 +57,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
+        'status'=>false,
+        'msg'=> 'Gagal Tambah User Data'
       
     );
 
