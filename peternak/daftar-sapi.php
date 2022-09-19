@@ -261,8 +261,8 @@ if(isset($_POST["generate-qr"]) ){
     });
 
     $(document).on('click', '.deleteBtn', function(event) {
-      var table = $('#tablesapi').DataTable();
       event.preventDefault();
+      var table = $('#tablesapi').DataTable();
       var id = $(this).data('id');
       var id_sapi = $(this).data('id_sapi');
       if (confirm("Are you sure want to delete this Jenis Sapi ? ")) {
