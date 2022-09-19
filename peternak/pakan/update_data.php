@@ -2,7 +2,7 @@
 include('../../conn.php');
 
 $id = $_POST['id'];
-$jenis = $_POST['pakan'];
+$pakan = $_POST['pakan'];
 $update_dt = date("Y-m-d H:i:s");
 $input_dt = $update_dt;
 
@@ -13,8 +13,9 @@ if($query ==true)
 {
    
     $data = array(
-        'status'=>'true',
+        'status'=>true,
         'pakan'=>$pakan,
+        'msg' => 'Berhasil update data'
     );
 
     echo json_encode($data);
@@ -22,7 +23,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
+        'status'=>false,
+        'msg' => 'Gagal update data'
       
     );
 

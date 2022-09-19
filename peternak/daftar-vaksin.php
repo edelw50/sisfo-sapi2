@@ -72,10 +72,6 @@ echo '</div>';
     <script>
     $(document).ready(function() {
       $('#tablevaksin').DataTable({
-        // "columnDefs": [
-        // { "width": "60%", "targets": 2 },
-        // { "width": "13%", "targets": 5 }
-        // ],
         "fnCreatedRow": function(nRow, aData, iDataIndex) {
           $(nRow).attr('id_vaksin', aData[0]);
         },
@@ -104,11 +100,11 @@ echo '</div>';
           success: function(data) {
             let json = JSON.parse(data);
             let status = json.status;
-            if (status == 'true') {
+            if (status) {
               mytable = $('#tablevaksin').DataTable();
               mytable.draw();
               $('#addVaksinForm input').val('');
-              $('#addPakan').modal('hide');
+              $('#addVaksin').modal('hide');
             } else {
               alert('failed');
             }
@@ -135,9 +131,26 @@ echo '</div>';
             let u = $('#tablevaksin tbody tr[id_vaksin]').text();
             console.log("hasil "+u);
               table = $('#tablevaksin').DataTable();
+              var dataReturn = JSON.parse(data);
+              if(dataReturn.status){
+                $('.alert-true').removeClass('d-none');
+                $('.alert-true').text(dataReturn.msg);
+              }else{
+                $('.alert-false').removeClass('d-none');
+                $('.alert-false').text(dataReturn.msg);
+              }
               var row = table.row("[id='" + trid + "']");
               $('#updateVaksin').on('hidden.bs.modal', function () {
-                location.reload();
+                if(!$('.alert-true').hasClass('d-none'))
+                {
+                  $('.alert-true').addClass('d-none');
+                  $('.alert-true').text('')
+                }if(!$('.alert-false').hasClass('d-none'))
+                {
+                  $('.alert-false').text('')
+                  $('.alert-false').addClass('d-none');
+                }
+                table.draw();
             })
           }
       });
@@ -185,8 +198,9 @@ echo '</div>';
           success: function(data) {
             var json = JSON.parse(data);
             status = json.status;
-            if (status == 'success') {
+            if (status) {
               $("#" + id).closest('tr').remove();
+              table.draw();
             } else {
               alert('Failed');
               return;

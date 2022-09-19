@@ -180,8 +180,6 @@ if(isset($_POST["generate-qr"]) ){
           success: function(data) {
             console.log("data update sapi" +data);
             var dataReturn = JSON.parse(data);
-            // $('.alert-true.alert-false').removeClass('d-none')
-            // $('.alert-true.alert-false').addClass('d-none');
             if(dataReturn.status){
               $('.alert-true').removeClass('d-none');
               $('.alert-true').text(dataReturn.msg);

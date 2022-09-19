@@ -140,8 +140,27 @@ echo '</div>';
               table = $('#table-jenis-sapi').DataTable();
               var row = table.row("[id='" + trid + "']");
               $('#updateJenis').on('hidden.bs.modal', function () {
-                location.reload();
+                if(!$('.alert-true').hasClass('d-none'))
+                {
+                  $('.alert-true').addClass('d-none');
+                  $('.alert-true').text('')
+                }if(!$('.alert-false').hasClass('d-none'))
+                {
+                  $('.alert-false').text('')
+                  $('.alert-false').addClass('d-none');
+                }
+                table.draw();
             })
+            var dataReturn = JSON.parse(data);
+            // $('.alert-true.alert-false').removeClass('d-none')
+            // $('.alert-true.alert-false').addClass('d-none');
+            if(dataReturn.status){
+              $('.alert-true').removeClass('d-none');
+              $('.alert-true').text(dataReturn.msg);
+            }else{
+              $('.alert-false').removeClass('d-none');
+              $('.alert-false').text(dataReturn.msg);
+            }
           }
       });
     }
@@ -176,8 +195,8 @@ echo '</div>';
       });
     });
     $(document).on('click', '.deleteBtn', function(event) {
-      var table = $('#table-jenis-sapi').DataTable();
       event.preventDefault();
+      var table = $('#table-jenis-sapi').DataTable();
       var id = $(this).data('id');
       if (confirm("Are you sure want to delete this Jenis Sapi ? ")) {
         $.ajax({
@@ -191,6 +210,7 @@ echo '</div>';
             status = json.status;
             if (status == 'success') {
               $("#" + id).closest('tr').remove();
+              table.draw();
             } else {
               alert('Failed');
               return;

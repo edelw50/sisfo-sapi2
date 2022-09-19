@@ -68,7 +68,7 @@ while($row = mysqli_fetch_assoc($query))
     $sub_array[] = $row['harga_sapi'];
     $sub_array[] = $row['input_dt'];
     $sub_array[] = $row['update_dt'];
-	$sub_array[] = '<a href="javascript:void();" data-id="'.$row['id'].'"  class="btn btn-info btn-sm mx-1 my-1 editbtn" >Edit</a> <a href="page.php?view&id='.$row['id_sapi'].'" data-id="'.$row['id'].'" class="btn mx-1 my-1 btn-success btn-sm viewbtn">View</a> <a href="javascript:void();" data-id="'.$row['id'].'"  class="btn mx-1 my-1 btn-danger btn-sm deleteBtn" onclick="javascript:window.location.reload()" >Delete</a>';
+	$sub_array[] = '<a href="javascript:void();" data-id="'.$row['id'].'"  class="btn btn-info btn-sm mx-1 my-1 editbtn" >Edit</a> <a href="page.php?view&id='.$row['id_sapi'].'" data-id="'.$row['id'].'" class="btn mx-1 my-1 btn-success btn-sm viewbtn">View</a> <a href="javascript:void();" data-id="'.$row['id'].'"  class="btn mx-1 my-1 btn-danger btn-sm deleteBtn" >Delete</a>';
 	$data[] = $sub_array;
 }
 

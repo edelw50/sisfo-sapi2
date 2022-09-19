@@ -140,7 +140,15 @@ echo '</div>';
               table = $('#table-jenis-sapi').DataTable();
               var row = table.row("[id='" + trid + "']");
               $('#updateJenis').on('hidden.bs.modal', function () {
-                location.reload();
+                if(!$('.alert-true').hasClass('d-none'))
+                {
+                  $('.alert-true').addClass('d-none');
+                  $('.alert-true').text('')
+                }if(!$('.alert-false').hasClass('d-none'))
+                {
+                  $('.alert-false').text('')
+                  $('.alert-false').addClass('d-none');
+                }
             })
           }
       });
