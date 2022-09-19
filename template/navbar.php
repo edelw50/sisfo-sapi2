@@ -62,6 +62,7 @@
                     <a href="page.php?admin-daftar-jenis&id=<?= $_SESSION['id_user'] ;?>" class="nav-item nav-link"><i class="fa-solid fa-cow me-2"></i>Daftar Jenis Sapi</a>
                     <a href="page.php?admin-daftar-pakan&id=<?= $_SESSION['id_user'] ;?>" class="nav-item nav-link"><i class="fa-solid fa-leaf me-2"></i>Daftar Pakan Sapi</a>
                     <a href="page.php?admin-daftar-vaksin&id=<?= $_SESSION['id_user'] ;?>" class="nav-item nav-link"><i class="fa-solid fa-syringe me-2"></i>Daftar Vaksin Sapi</a>
+                    <a href="page.php?admin-daftar-history&id=<?= $_SESSION['id_user'] ;?>" class="nav-item nav-link"><i class="fa-solid fa-clock-rotate-left me-2"></i>History</a>
                     <a href="page.php?logout" class="nav-item nav-link"><i class="fa-solid fa-right-from-bracket me-2"></i>Logout</a>
                 </div>
             </nav>

@@ -8,7 +8,7 @@ require_once('../history/add_data.php');
 $history = new History();
 
 $id = $_POST['id'];
-$jenis = $_POST['pakan'];
+$pakan = $_POST['pakan'];
 $update_dt = date("Y-m-d H:i:s");
 $input_dt = $update_dt;
 

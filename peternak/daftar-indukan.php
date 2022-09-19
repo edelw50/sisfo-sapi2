@@ -33,10 +33,7 @@ if(isset($_POST["generate-qr"]) ){
               <div class="row vh-100 bg-light rounded">
                   <div class="col">
                         <br>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addSapi"><i class="fa-solid fa-qrcode me-2"></i>Tambah Data Sapi</button>
-                        <br><br>
                         <!-- modal jenis -->
-                        <?php include ('template/modal-sapi.php'); ?>
                         <table id="tablesapi" class="display">
                             <thead>
                                 <tr class="">

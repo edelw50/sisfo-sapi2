@@ -33,7 +33,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success" onclick="javascript:window.location.reload()">Update User Sapi</button>
+                    <button type="submit" class="btn btn-success">Update User Sapi</button>
                 </div>
             </form>
         </div>

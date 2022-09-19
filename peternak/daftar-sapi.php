@@ -140,6 +140,7 @@ if(isset($_POST["generate-qr"]) ){
     });
 
     function submitForm(){
+      var table = $('#tablesapi').DataTable();
       $.ajax({
           url: "peternak/sapi/add_data.php",
           type: "post",
@@ -148,8 +149,7 @@ if(isset($_POST["generate-qr"]) ){
             let json = JSON.parse(data);
             let status = json.status;
             if (status) {
-              mytable = $('#tablesapi').DataTable();
-              mytable.draw();
+              table.draw();
               $('#addSapiForm input').val('');
               $('#opsi_jenis: selected').text();
               $('#opsi_pakan: selected').text();
@@ -173,6 +173,7 @@ if(isset($_POST["generate-qr"]) ){
 
 
     function updateForm(){
+      var table = $('#tablesapi').DataTable();
       $.ajax({
           url: "peternak/sapi/update_data.php",
           type: "post",
@@ -187,6 +188,7 @@ if(isset($_POST["generate-qr"]) ){
               $('.alert-false').removeClass('d-none');
               $('.alert-false').text(dataReturn.msg);
             }
+            table.draw();
             // var json = JSON.parse(data);
             // var status = json.status;
             // let u = $('#table-jenis-sapi tbody tr[id_jenis]').text();
@@ -274,7 +276,7 @@ if(isset($_POST["generate-qr"]) ){
           success: function(data) {
             var json = JSON.parse(data);
             status = json.status;
-            if (status == 'success') {
+            if (status) {
               $("#" + id).closest('tr').remove();
               $("#" + id_sapi).closest('tr').remove();
               table.draw();

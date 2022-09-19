@@ -51,6 +51,9 @@ if(isset($_GET['admin-daftar-pakan'])){
 if(isset($_GET['admin-daftar-vaksin'])){ 
     include'admin/daftar-vaksin.php';
 }
+if(isset($_GET['admin-daftar-history'])){ 
+    include'admin/daftar-history.php';
+}
 
 
 //halaman peternak

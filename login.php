@@ -38,8 +38,11 @@ if(isset($_POST["login"])){
         
         //cek passwordnya
         $row = mysqli_fetch_assoc($result);
+        // print_r([$password, $row['password'], password_verify($password, $row["password"])]);
+        // exit();
         if (password_verify($password, $row["password"])) {
             //set session
+
             $_SESSION["login"] = true;
 
             //buat session 
@@ -48,7 +51,6 @@ if(isset($_POST["login"])){
             $_SESSION['level'] = $row['level'];
             
             setcookie('id_user', $row['id_user'], time()+3600);
-
             //cek remember me
             if(isset($_POST['remember'])){
                 //buat cookie
@@ -58,7 +60,7 @@ if(isset($_POST["login"])){
 
             }
 
-
+            sleep(1);
             //cek level
             if($row["level"] == 'Admin'){
                 header("location:page.php?admin-home");
