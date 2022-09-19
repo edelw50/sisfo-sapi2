@@ -105,7 +105,7 @@ function submitForm() {
         success: function(data) {
             let json = JSON.parse(data);
             let status = json.status;
-            if (status == 'true') {
+            if (status) {
                 mytable = $('#tablevaksin').DataTable();
                 mytable.draw();
                 $('#addVaksinForm input').val('');

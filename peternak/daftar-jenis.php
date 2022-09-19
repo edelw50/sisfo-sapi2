@@ -106,7 +106,7 @@ echo '</div>';
           success: function(data) {
             let json = JSON.parse(data);
             let status = json.status;
-            if (status == 'true') {
+            if (status) {
               mytable = $('#table-jenis-sapi').DataTable();
               mytable.draw();
               $('#addJenisForm input').val('');

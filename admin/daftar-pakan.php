@@ -105,7 +105,7 @@ function submitForm() {
         success: function(data) {
             let json = JSON.parse(data);
             let status = json.status;
-            if (status == 'true') {
+            if (status) {
                 mytable = $('#tablepakan').DataTable();
                 mytable.draw();
                 $('#addPakanForm input').val('');

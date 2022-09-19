@@ -156,7 +156,7 @@ if(isset($_POST["generate-qr"]) ){
           success: function(data) {
             let json = JSON.parse(data);
             let status = json.status;
-            if (status == 'true') {
+            if (status) {
               mytable = $('#tablesapi').DataTable();
               mytable.draw();
               $('#addSapiForm input').val('');
