@@ -5,6 +5,9 @@ error_reporting(E_ALL);
 
 include('../../conn.php');
 include('../../functions.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $id_user = $_POST["id"];
 //ambil _POST dari tiap elemen
@@ -47,7 +50,7 @@ foreach ($array_vaksin as $vaksin){
 
 if($query ==true)
 {
-   
+    $history->add_data('ADD SAPI DATA', $_COOKIE['id_user']);
     $data = array(
         'status'=>true,
         'msg' => 'Berhasil Tambah Data'

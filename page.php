@@ -3,9 +3,10 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
+
 //halaman awal
- if(isset($_GET['login'])){ 
-include'login.php';
+if(isset($_GET['login'])){ 
+    include'login.php';
 }
  if(isset($_GET['logout'])){ 
 include'logout.php';
@@ -14,6 +15,15 @@ if(isset($_GET['lupa-sandi'])){
 include'reset.php';
 }
 
+if(!isset($_COOKIE['id_user']))
+{
+    if(!isset($_GET['login']) && !isset($_GET['logout']) && !isset($_GET['lupa-sandi'])){
+        header('Location: /page.php?login');
+    }
+}
+
+
+setcookie('id_user', $_COOKIE['id_user'], time()+3600);
 //halaman error session
 //  if(isset($_GET['access-admin'])){ 
 // include'system/error/access-admin.php';
@@ -63,7 +73,7 @@ if(isset($_GET['peternak-daftar-indukan'])){
     include'peternak/daftar-indukan.php';
 }
 if(isset($_GET['peternak-history'])){ 
-include'peternak/history.php';
+include'peternak/daftar-history.php';
 }  
 
 //halaman view

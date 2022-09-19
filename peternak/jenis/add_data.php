@@ -1,5 +1,8 @@
 <?php 
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $jenis = $_POST['jenis'];
 $keterangan = $_POST['keterangan'];
@@ -11,7 +14,7 @@ $query= mysqli_query($con,$sql);
 $lastId = mysqli_insert_id($con);
 if($query ==true)
 {
-   
+    $history->add_data('ADD DATA JENIS', $_COOKIE['id_user']);
     $data = array(
         'status'=>'true',
        

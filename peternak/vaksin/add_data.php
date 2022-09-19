@@ -1,5 +1,8 @@
 <?php 
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $vaksin = $_POST['vaksin'];
 $input_dt = date("Y-m-d H:i:s");
@@ -10,7 +13,7 @@ $query= mysqli_query($con,$sql);
 $lastId = mysqli_insert_id($con);
 if($query ==true)
 {
-   
+    $history->add_data('ADD VAKSIN DATA', $_COOKIE['id_user']);
     $data = array(
         'status'=>true,
         'msg' => 'Berhasil Tambah Data'

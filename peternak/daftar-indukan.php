@@ -3,7 +3,7 @@ require 'functions.php';
 include('template/header.php');
 echo '<title>Halaman Peternak</title>';
 include('template/navbar-peternak.php');
-echo '<h3>Daftar Sapi</h3>';
+echo '<h3>Daftar Indukan Sapi</h3>';
 echo '<hr>';
 echo '</div>';
 echo '</div>';

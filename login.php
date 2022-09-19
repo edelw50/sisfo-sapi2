@@ -47,6 +47,7 @@ if(isset($_POST["login"])){
             $_SESSION['username'] = $row['username'];
             $_SESSION['level'] = $row['level'];
 
+            setcookie('id_user', $row['id_user'], time()+3600);
 
             //cek remember me
             if(isset($_POST['remember'])){

@@ -3,6 +3,9 @@ ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 include('../../conn.php');
+require_once('../history/add_data.php');
+
+$history = new History();
 
 $id = $_POST['id_prim'];
 $id_sapi = $_POST['id_sapi'];
@@ -30,7 +33,7 @@ foreach ($array_vaksin as $vaksin){
 $lastId = mysqli_insert_id($con);
 if($query ==true)
 {
-   
+    $history->add_data('UPDATE SAPI DATA', $_COOKIE['id_user']);
     $data = array(
         'status'=>true,
         'msg' => 'Berhasil Update Data'
