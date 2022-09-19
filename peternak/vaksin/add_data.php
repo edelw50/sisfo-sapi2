@@ -13,7 +13,7 @@ if($query ==true)
    
     $data = array(
         'status'=>'true',
-       
+        'msg' => 'Berhasil Tambah Data'
     );
 
     echo json_encode($data);
@@ -22,7 +22,7 @@ else
 {
      $data = array(
         'status'=>'false',
-      
+        'msg' => 'Gagal Tambah Data'
     );
 
     echo json_encode($data);

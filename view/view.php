@@ -58,6 +58,10 @@ $result = query("SELECT * FROM data_sapi WHERE id_sapi='$id_sapi'")[0];
                                             <th>Harga</th>
                                             <td><?=$result['harga_sapi'];?></td>
                                        </tr>
+                                       <tr>
+                                            <th>Indukan</th>
+                                            <td><?= query("SELECT nama FROM data_sapi where id = '{$result['id_parent']}'")[0]['nama'] ?? 'Belum di setting' ?></td>
+                                       </tr>
                                     </tbody>
                                 </table>
 

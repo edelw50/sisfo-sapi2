@@ -1,5 +1,7 @@
 <?php
-//error_reporting(0);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
 //halaman awal
  if(isset($_GET['login'])){ 
@@ -67,6 +69,9 @@ include'peternak/history.php';
 //halaman view
 if(isset($_GET['view'])){
 include'view/view.php';
+}
+if(isset($_GET['view-induk'])){
+include'view/indukan.php';
 }
 
 //download

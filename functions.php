@@ -2,7 +2,7 @@
 
 //buat koneksi ke db
 // $conn = mysqli_connect('localhost','siss1274_admin','javanica123','siss1274_test');
-$conn = mysqli_connect('localhost','root','','test');
+$conn = mysqli_connect('127.0.0.1','root','LogicalMover123!@#','sapi');
 
 require_once('phpqrcode/qrlib.php');
 
@@ -114,7 +114,8 @@ function generateqr($data){
     $nomor = randomString();
     $jenis = htmlspecialchars($data["opsi_jenis"]);
     $pakan = htmlspecialchars($data["opsi_pakan"]);
-    $array_vaksin = $data["vaksin"];
+    $indukan = htmlspecialchars($data["id_parent"]) ?? null;
+    $array_vaksin = $data["vaksin"] ?? [];
     $gender = htmlspecialchars($data["opsi_gender"]);
     $birth_dt = htmlspecialchars($data["birth_dt"]);
     $weight_kg = htmlspecialchars($data["weight_kg"]);
@@ -141,7 +142,7 @@ function generateqr($data){
     $qr = base64_encode(file_get_contents($pngAbsoluteFilePath));
     
     $query = "INSERT INTO data_sapi VALUES 
-    ('','$nama',$id_user,'$qrvalue','$jenis','$pakan', '$gender', '$birth_dt', $weight_kg, '$warna', $harga,'$qr','$input_dt','$update_dt')";
+    (null,'$nama',$id_user,'$qrvalue','$jenis','$pakan', '$gender', '$birth_dt', $weight_kg, '$warna', $harga,'$qr','$input_dt','$update_dt', '$indukan')";
     mysqli_query($conn, $query);
 
 

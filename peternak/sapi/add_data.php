@@ -1,4 +1,7 @@
-<?php 
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
 include('../../conn.php');
 include('../../functions.php');
@@ -46,7 +49,8 @@ if($query ==true)
 {
    
     $data = array(
-        'status'=>'true',
+        'status'=>true,
+        'msg' => 'Berhasil Tambah Data'
        
     );
 
@@ -55,8 +59,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
-      
+        'status'=>false,
+        'msg' => 'Gagal Tambah Data'
     );
 
     echo json_encode($data);

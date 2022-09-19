@@ -8,7 +8,7 @@ echo '<hr>';
 echo '</div>';
 echo '</div>';
 
-print_r($_POST);
+// print_r($_POST);
 
 if(isset($_POST["generate-qr"]) ){
     
@@ -43,6 +43,7 @@ if(isset($_POST["generate-qr"]) ){
                                     <th>Id</th>
                                     <th>Nama</th>
                                     <th>Id_sapi</th>
+                                    <th>Id_parent</th>
                                     <th>Id_jenis</th>
                                     <th>Id_pakan</th>
                                     <th>Gender</th>
@@ -60,6 +61,7 @@ if(isset($_POST["generate-qr"]) ){
                                     <td>Id</td>
                                     <td>Nama</td>
                                     <td>Id_sapi</td>
+                                    <td>Id_parent</td>
                                     <td>Id_jenis</td>
                                     <td>Id_pakan</td>
                                     <td>Gender</td>
@@ -137,37 +139,37 @@ if(isset($_POST["generate-qr"]) ){
       });
     });
 
-    // function submitForm(){
-    //   $.ajax({
-    //       url: "peternak/sapi/add_data.php",
-    //       type: "post",
-    //       data: $('form#addSapiForm').serialize(),
-    //       success: function(data) {
-    //         let json = JSON.parse(data);
-    //         let status = json.status;
-    //         if (status == 'true') {
-    //           mytable = $('#tablesapi').DataTable();
-    //           mytable.draw();
-    //           $('#addSapiForm input').val('');
-    //           $('#opsi_jenis: selected').text();
-    //           $('#opsi_pakan: selected').text();
-    //           // $('#opsi_vaksin: selected').text();
-    //           $('#opsi_gender: selected').text();
-    //           $('#opsi_warna: selected').text();
-    //           $('#addSapi').modal('hide');
-    //         } else {
-    //           alert('failed');
-    //         }
-    //       }
-    //   });
-    // }
+    function submitForm(){
+      $.ajax({
+          url: "peternak/sapi/add_data.php",
+          type: "post",
+          data: $('form#addSapiForm').serialize(),
+          success: function(data) {
+            let json = JSON.parse(data);
+            let status = json.status;
+            if (status == 'true') {
+              mytable = $('#tablesapi').DataTable();
+              mytable.draw();
+              $('#addSapiForm input').val('');
+              $('#opsi_jenis: selected').text();
+              $('#opsi_pakan: selected').text();
+              // $('#opsi_vaksin: selected').text();
+              $('#opsi_gender: selected').text();
+              $('#opsi_warna: selected').text();
+              $('#addSapi').modal('hide');
+            } else {
+              alert('failed');
+            }
+          }
+      });
+    }
 
-    // $(document).ready(function(){
-    //   $('#addSapiForm').on('submit', function(){
-    //     submitForm();
-    //     return false;
-    //   });
-    // })
+    $(document).ready(function(){
+      $('#addSapiForm').on('submit', function(){
+        submitForm();
+        return false;
+      });
+    })
 
 
     function updateForm(){
@@ -177,6 +179,16 @@ if(isset($_POST["generate-qr"]) ){
           data: $('form#editSapiForm').serialize(),
           success: function(data) {
             console.log("data update sapi" +data);
+            var dataReturn = JSON.parse(data);
+            // $('.alert-true.alert-false').removeClass('d-none')
+            // $('.alert-true.alert-false').addClass('d-none');
+            if(dataReturn.status){
+              $('.alert-true').removeClass('d-none');
+              $('.alert-true').text(dataReturn.msg);
+            }else{
+              $('.alert-false').removeClass('d-none');
+              $('.alert-false').text(dataReturn.msg);
+            }
             // var json = JSON.parse(data);
             // var status = json.status;
             // let u = $('#table-jenis-sapi tbody tr[id_jenis]').text();
@@ -198,6 +210,18 @@ if(isset($_POST["generate-qr"]) ){
         updateForm();
         return false;
       });
+
+      $('#editSapi').on('hidden.bs.modal', function(){
+        if(!$('.alert-true').hasClass('d-none'))
+        {
+          $('.alert-true').addClass('d-none');
+          $('.alert-true').text('')
+        }if(!$('.alert-false').hasClass('d-none'))
+        {
+          $('.alert-false').text('')
+          $('.alert-false').addClass('d-none');
+        }
+      })
     })
 
 
@@ -205,6 +229,8 @@ if(isset($_POST["generate-qr"]) ){
       var table = $('#tablesapi').DataTable();
       var trid = $(this).closest('tr').attr('id');
       var id = $(this).data('id');
+      $('#id_parent option.d-none').removeClass('d-none');
+      $('#id_parent option[value="'+id+'"]').addClass('d-none');
       // var id_sapi = $(this).data('id_sapi');
 
       // console.log("isi id"+id);
@@ -227,6 +253,7 @@ if(isset($_POST["generate-qr"]) ){
             $('#editSapi #birth_dt').val(json.tgl_lahir);
             $('#editSapi #weight_kg').val(json.bobot_sapi);
             $('#editSapi #opsi_warna option[value='+json.warna_sapi+']').attr('selected', 'selected');
+            $('#editSapi #id_parent option[value='+json.id_parent+']').attr('selected', 'selected');
             $('#editSapi #harga').val(json.harga_sapi);
             $('#editSapi #trid').val(trid);
         }

@@ -1,8 +1,11 @@
-<?php 
+<?php
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL); 
 include('../../conn.php');
 
 $output= array();
-$sql = "SELECT * FROM data_sapi ";
+$sql = "SELECT * FROM data_sapi";
 
 $totalQuery = mysqli_query($con,$sql);
 $total_all_rows = mysqli_num_rows($totalQuery);
@@ -26,28 +29,14 @@ $columns = array(
 if(isset($_POST['search']['value']))
 {
 	$search_value = $_POST['search']['value'];
-	$sql .= " WHERE nama like '%".$search_value."%'";
+	$sql .= " WHERE (nama like '%".$search_value."%'";
 	$sql .= " OR jenis_kelamin like '%".$search_value."%'";
-    $sql .= " OR warna_sapi like '%".$search_value."%'";
+    $sql .= " OR warna_sapi like '%".$search_value."%')";
+    $sql .= "and id in (select id_parent from data_sapi)";
+}else{
+    $sql .= "where id in (select id_parent from data_sapi)";
 }
 
-// if(isset($_POST['order']))
-// {
-// 	$column_name = $_POST['order'][0]['column'];
-// 	$order = $_POST['order'][0]['dir'];
-// 	$sql .= " ORDER BY ".$columns[$column_name]." ".$order."";
-// }
-// else
-// {
-// 	$sql .= " ORDER BY id desc";
-// }
-
-// if($_POST['length'] != -1)
-// {
-// 	$start = $_POST['start'];
-// 	$length = $_POST['length'];
-// 	$sql .= " LIMIT  ".$start.", ".$length;
-// }	
 
 $query = mysqli_query($con,$sql);
 $count_rows = mysqli_num_rows($query);
@@ -68,7 +57,7 @@ while($row = mysqli_fetch_assoc($query))
     $sub_array[] = $row['harga_sapi'];
     $sub_array[] = $row['input_dt'];
     $sub_array[] = $row['update_dt'];
-	$sub_array[] = '<a href="javascript:void();" data-id="'.$row['id'].'"  class="btn btn-info btn-sm mx-1 my-1 editbtn" >Edit</a> <a href="page.php?view&id='.$row['id_sapi'].'" data-id="'.$row['id'].'" class="btn mx-1 my-1 btn-success btn-sm viewbtn">View</a> <a href="javascript:void();" data-id="'.$row['id'].'"  class="btn mx-1 my-1 btn-danger btn-sm deleteBtn" onclick="javascript:window.location.reload()" >Delete</a>';
+	$sub_array[] = '<a href="page.php?view-induk&id='.$row['id_sapi'].'" data-id="'.$row['id'].'" class="btn btn-success btn-sm viewbtn">View</a>';
 	$data[] = $sub_array;
 }
 

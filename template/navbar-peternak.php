@@ -86,7 +86,7 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa-solid fa-user"></i>
-                            <span class="d-none d-lg-inline-flex"><?= $_SESSION['username'] ;?></span>
+                            <span class="d-none d-lg-inline-flex"><?= $_SESSION['username'] ?? 'Username tidak tersedia' ;?></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
                             <!-- <a href="#" class="dropdown-item">My Profile</a>

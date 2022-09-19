@@ -9,8 +9,8 @@ $delQuery =mysqli_query($con,$sql);
 if($delQuery==true)
 {
 	 $data = array(
-        'status'=>'success',
-       
+        'status'=>true,
+        'msg' => 'Berhasil Hapus Data'
     );
 
     echo json_encode($data);
@@ -18,8 +18,8 @@ if($delQuery==true)
 else
 {
      $data = array(
-        'status'=>'failed',
-      
+        'status'=>false,
+        'msg' => 'Gagal Hapus Data'
     );
 
     echo json_encode($data);

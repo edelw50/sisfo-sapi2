@@ -13,8 +13,9 @@ if($query ==true)
 {
    
     $data = array(
-        'status'=>'true',
+        'status'=>true,
         'vaksin'=>$vaksin,
+        'msg' => 'Berhasil Update Data'
     );
 
     echo json_encode($data);
@@ -22,8 +23,8 @@ if($query ==true)
 else
 {
      $data = array(
-        'status'=>'false',
-      
+        'status'=>false,
+        'msg' => 'Gagal Update Data'
     );
 
     echo json_encode($data);

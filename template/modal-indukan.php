@@ -2,13 +2,6 @@
 <div class="modal fade" id="addSapi" tabindex="-1" aria-labelledby="addSapiLabel" aria-hidden="true" >
             <div class="modal-dialog">
                 <div class="modal-content">
-                
-                <div class="alert alert-true d-none alert-success" role="alert">
-                
-                </div>
-                <div class="alert alert-false d-none alert-danger" role="alert">
-                
-                </div>
                     <div class="modal-header">
                         <h5 class="modal-title">Tambah Data Sapi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,25 +76,12 @@
                                 </select>
                             </div>
                             <div class="input-group mb-3">
-                                <label class="input-group-text" for="id_parent"><i class="fa-solid fa-palette"></i></label>
-                                <select class="form-select" name="id_parent" id="id_parent">
-                                    <option selected>--Parent Sapi--</option>
-                                    <?php 
-                                    $sql = mysqli_query($conn, "SELECT * FROM data_sapi where jenis_kelamin = 'Betina'") or die (mysqli_error($conn));
-                                    while($data=mysqli_fetch_array($sql)){
-                                        echo '<option value="'.$data['id'].'">'.$data['nama'].'</option>';
-                                    }
-                                    ?>
-                                    <option value="Coklat">Coklat</option>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-rupiah-sign"></i></span>
                                 <input type="number" name="harga" id="harga" class="form-control" placeholder="Harga Sapi" aria-label="Harga Sapi" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="closeBtn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="generate-qr" class="btn btn-success" ><i class="fa-solid fa-qrcode me-2"></i>Generate QRCode!</button>
                         </div>
                     </form>
@@ -113,12 +93,6 @@
 <div class="modal fade" id="editSapi" tabindex="-1" aria-labelledby="editSapiLabel" aria-hidden="true" >
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="alert alert-true d-none alert-success" role="alert">
-                
-                </div>
-                <div class="alert alert-false d-none alert-danger" role="alert">
-                
-                </div>
                     <div class="modal-header">
                         <h5 class="modal-title">Edit Data Sapi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -205,24 +179,12 @@
                                 </select>
                             </div>
                             <div class="input-group mb-3">
-                                <label class="input-group-text" for="id_parent"><i class="fas fa-viruses"></i></label>
-                                <select class="form-select" name="id_parent" id="id_parent">
-                                    <option selected>--Parent Sapi--</option>
-                                    <?php 
-                                    $sql = mysqli_query($conn, "SELECT * FROM data_sapi where jenis_kelamin = 'Betina'") or die (mysqli_error($conn));
-                                    while($data=mysqli_fetch_array($sql)){
-                                        echo '<option value="'.$data['id'].'">'.$data['nama'].'</option>';
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-rupiah-sign"></i></span>
                                 <input type="number" name="harga" id="harga" class="form-control" placeholder="Harga Sapi" aria-label="Harga Sapi" aria-describedby="basic-addon1">
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="closeBtn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" name="generate-qr" class="btn btn-success" ><i class="fa-solid fa-qrcode me-2"></i>Generate QRCode!</button>
                         </div>
                     </form>
