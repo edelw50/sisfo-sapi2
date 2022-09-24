@@ -43,9 +43,9 @@ if(isset($_POST["generate-qr"]) ){
                                     <th>Id</th>
                                     <th>Nama</th>
                                     <th>Id_sapi</th>
-                                    <th>Id_parent</th>
-                                    <th>Id_jenis</th>
-                                    <th>Id_pakan</th>
+                                    <th>Parent Name</th>
+                                    <th>Jenis</th>
+                                    <th>Pakan</th>
                                     <th>Gender</th>
                                     <th>Birthdate</th>
                                     <th>Bobot</th>
@@ -61,9 +61,9 @@ if(isset($_POST["generate-qr"]) ){
                                     <td>Id</td>
                                     <td>Nama</td>
                                     <td>Id_sapi</td>
-                                    <td>Id_parent</td>
-                                    <td>Id_jenis</td>
-                                    <td>Id_pakan</td>
+                                    <td>Parent Name</td>
+                                    <td>Jenis</td>
+                                    <td>Pakan</td>
                                     <td>Gender</td>
                                     <th>Birthdate</th>
                                     <th>Bobot</th>

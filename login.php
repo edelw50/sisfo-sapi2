@@ -48,19 +48,19 @@ if(isset($_POST["login"])){
             //buat session 
             $_SESSION['id_user'] = $row['id_user'];
             $_SESSION['username'] = $row['username'];
-            $_SESSION['level'] = $row['level'];
+            $_SESSION['level'] = $row['level']; 
             
-            setcookie('id_user', $row['id_user'], time()+3600);
             //cek remember me
             if(isset($_POST['remember'])){
                 //buat cookie
 
-              setcookie('id', $row['id'], time()+60);
-              setcookie('key', hash('sha256', $row['username']), time()+60);
+              setcookie('id', $row['id'], time()+3600);
+              setcookie('key', hash('sha256', $row['username']), time()+3600);
 
             }
 
-            sleep(1);
+            // print_r($row);
+            setcookie('id_user', $_SESSION['id_user'], time()+3600, '/');
             //cek level
             if($row["level"] == 'Admin'){
                 header("location:page.php?admin-home");

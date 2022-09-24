@@ -5,7 +5,27 @@ error_reporting(E_ALL);
 include('../../conn.php');
 
 $output= array();
-$sql = "SELECT * FROM data_sapi";
+$sql = "SELECT
+		ds.id as id,
+		ds.nama as nama,
+		ds.id_sapi as id_sapi,
+		ds.jenis_kelamin as jenis_kelamin,
+		ds.tgl_lahir as tgl_lahir,
+		ds.bobot_sapi as bobot_sapi,
+		ds.warna_sapi as warna_sapi,
+		ds.harga_sapi as harga_sapi,
+		ds.input_dt as input_dt,
+		ds.update_dt as update_dt,
+		j.jenis as id_jenis,
+		p.pakan as id_pakan,
+		parent.nama as id_parent
+		FROM data_sapi AS ds
+		LEFT JOIN jenis AS j
+		ON ds.id_jenis = j.id_jenis
+		LEFT JOIN pakan AS p
+		ON ds.id_pakan = p.id_pakan
+		LEFT JOIN data_sapi as parent
+		on ds.id_parent = parent.id";
 
 $totalQuery = mysqli_query($con,$sql);
 $total_all_rows = mysqli_num_rows($totalQuery);
@@ -29,12 +49,12 @@ $columns = array(
 if(isset($_POST['search']['value']))
 {
 	$search_value = $_POST['search']['value'];
-	$sql .= " WHERE (nama like '%".$search_value."%'";
-	$sql .= " OR jenis_kelamin like '%".$search_value."%'";
-    $sql .= " OR warna_sapi like '%".$search_value."%')";
-    $sql .= "and id in (select id_parent from data_sapi)";
+	$sql .= " WHERE (ds.nama like '%".$search_value."%'";
+	$sql .= " OR ds.jenis_kelamin like '%".$search_value."%'";
+    $sql .= " OR ds.warna_sapi like '%".$search_value."%')";
+    $sql .= "and ds.id in (select id_parent from data_sapi)";
 }else{
-    $sql .= "where id in (select id_parent from data_sapi)";
+    $sql .= "where ds.id in (select id_parent from data_sapi)";
 }
 
 

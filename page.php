@@ -22,19 +22,6 @@ if(!isset($_COOKIE['id_user']))
     }
 }
 
-
-setcookie('id_user', $_COOKIE['id_user'], time()+3600);
-//halaman error session
-//  if(isset($_GET['access-admin'])){ 
-// include'system/error/access-admin.php';
-// }
-//  if(isset($_GET['access-peternak'])){ 
-// include'system/error/access-peternak.php';
-// }
-// if(isset($_GET['error-404'])){ 
-// include'system/error/404.php';
-// }
-
 //halaman admin
 if(isset($_GET['admin-home'])){ 
 include'admin/home.php';

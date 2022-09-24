@@ -85,14 +85,13 @@
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="id_parent"><i class="fa-solid fa-palette"></i></label>
                                 <select class="form-select" name="id_parent" id="id_parent">
-                                    <option selected>--Parent Sapi--</option>
+                                    <option value="" selected>--Parent Sapi--</option>
                                     <?php 
                                     $sql = mysqli_query($conn, "SELECT * FROM data_sapi where jenis_kelamin = 'Betina'") or die (mysqli_error($conn));
                                     while($data=mysqli_fetch_array($sql)){
                                         echo '<option value="'.$data['id'].'">'.$data['nama'].'</option>';
                                     }
                                     ?>
-                                    <option value="Coklat">Coklat</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
@@ -207,7 +206,7 @@
                             <div class="input-group mb-3">
                                 <label class="input-group-text" for="id_parent"><i class="fas fa-viruses"></i></label>
                                 <select class="form-select" name="id_parent" id="id_parent">
-                                    <option selected>--Parent Sapi--</option>
+                                    <option value="" selected>--Parent Sapi--</option>
                                     <?php 
                                     $sql = mysqli_query($conn, "SELECT * FROM data_sapi where jenis_kelamin = 'Betina'") or die (mysqli_error($conn));
                                     while($data=mysqli_fetch_array($sql)){

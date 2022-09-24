@@ -39,7 +39,7 @@ if(isset($_POST["generate-qr"]) ){
             <thead>
                 <tr class="">
                     <th>id</th>
-                    <th>id_user</th>
+                    <th>user</th>
                     <th>action</th>
                     <th>created_at</th>
                     <th>updated_at</th>
@@ -48,7 +48,7 @@ if(isset($_POST["generate-qr"]) ){
             <tbody>
                 <tr class="">
                     <td>id</td>
-                    <td>id_user</td>
+                    <td>user</td>
                     <td>action</td>
                     <td>created_at</td>
                     <td>updated_at</td>

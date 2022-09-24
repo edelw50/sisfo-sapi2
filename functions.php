@@ -140,9 +140,11 @@ function generateqr($data){
     }
 
     $qr = base64_encode(file_get_contents($pngAbsoluteFilePath));
-    
+
+    $masukan_indukan = $indukan !== '' ? "'$indukan'" : 'null';
+
     $query = "INSERT INTO data_sapi VALUES 
-    (null,'$nama',$id_user,'$qrvalue','$jenis','$pakan', '$gender', '$birth_dt', $weight_kg, '$warna', $harga,'$qr','$input_dt','$update_dt', '$indukan')";
+    (null,'$nama',$id_user,'$qrvalue','$jenis','$pakan', '$gender', '$birth_dt', $weight_kg, '$warna', $harga,':$qr','$input_dt','$update_dt', $masukan_indukan)";
     mysqli_query($conn, $query);
 
 

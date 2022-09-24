@@ -42,15 +42,17 @@ if(isset($_POST['search']['value']))
 $query = mysqli_query($con,$sql);
 $count_rows = mysqli_num_rows($query);
 $data = array();
+$no = 1;
 while($row = mysqli_fetch_assoc($query))
 {
 	$sub_array = array();
-	$sub_array[] = $row['id_vaksin'];
+	$sub_array[] = $no;
 	$sub_array[] = $row['vaksin'];
 	$sub_array[] = $row['input_dt'];
 	$sub_array[] = $row['update_dt'];
 	$sub_array[] = '<a href="javascript:void();" data-id="'.$row['id_vaksin'].'"  class="btn btn-info btn-sm editbtn" >Edit</a>  <a href="javascript:void();" data-id="'.$row['id_vaksin'].'"  class="btn btn-danger btn-sm deleteBtn" >Delete</a>';
 	$data[] = $sub_array;
+	$no++;
 }
 
 $output = array(

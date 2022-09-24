@@ -5,7 +5,15 @@ error_reporting(E_ALL);
 include('../../conn.php');
 
 $output= array();
-$sql = "SELECT * FROM history WHERE id_user = '".$_COOKIE['id_user']."'";
+$sql = "SELECT
+			u.username as id_user,
+			h.action as action,
+			h.updated_at as updated_at,
+			h.created_at as created_at
+		FROM history AS h
+		INNER JOIN user AS u
+		on h.id_user = u.id_user
+		WHERE h.id_user = '".$_COOKIE['id_user']."'";
 $totalQuery = mysqli_query($con,$sql);
 $total_all_rows = mysqli_num_rows($totalQuery);
 
@@ -20,10 +28,10 @@ $columns = array(
 if(isset($_POST['search']['value']))
 {
 	$search_value = $_POST['search']['value'];
-	$sql .= " AND action like '%".$search_value."%'";
+	$sql .= " AND h.action like '%".$search_value."%'";
 }
 
-$sql .= "ORDER BY created_at DESC";
+$sql .= "ORDER BY h.created_at DESC";
 
 
 $query = mysqli_query($con,$sql);
