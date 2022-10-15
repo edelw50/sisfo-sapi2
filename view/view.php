@@ -32,11 +32,11 @@ $result = query("SELECT * FROM data_sapi WHERE id_sapi='$id_sapi'")[0];
                                        </tr>
                                        <tr>
                                             <th>Jenis</th>
-                                            <td><?=$result['id_jenis'];?></td>
+                                            <td><?= query("SELECT jenis FROM jenis WHERE id_jenis = '{$result['id_jenis']}'")[0]['jenis']?></td>
                                        </tr>
                                        <tr>
                                             <th>Pakan</th>
-                                            <td><?=$result['id_pakan'];?></td>
+                                            <td><?=query("SELECT pakan FROM pakan WHERE id_pakan = '{$result['id_pakan']}'")[0]['pakan']?></td>
                                        </tr>
                                        <tr>
                                             <th>Gender</th>
@@ -61,6 +61,21 @@ $result = query("SELECT * FROM data_sapi WHERE id_sapi='$id_sapi'")[0];
                                        <tr>
                                             <th>Indukan</th>
                                             <td><?= query("SELECT nama FROM data_sapi where id = '{$result['id_parent']}'")[0]['nama'] ?? 'Belum di setting' ?></td>
+                                       </tr>
+                                       <tr>
+                                            <th>Vaksin</th>
+                                            <?php 
+                                                $dataVaksin = query("
+                                                SELECT j.vaksin as name
+                                                FROM
+                                                    vaksin_sapi AS vs
+                                                LEFT JOIN vaksin AS j
+		                                            ON vs.id_vaksin = j.id_vaksin WHERE vs.id_sapi = '{$id_sapi}'");
+                                                if(!empty($dataVaksin)){
+                                                foreach($dataVaksin as $each){
+                                            ?>
+                                                <td><?= $each['name'] ?></td>
+                                            <?php }} ?>
                                        </tr>
                                     </tbody>
                                 </table>

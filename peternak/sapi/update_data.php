@@ -27,7 +27,7 @@ mysqli_query($con, "DELETE FROM vaksin_sapi WHERE id_sapi='$id_sapi'");
 if(isset($_POST['vaksin'])){
 $array_vaksin = $_POST['vaksin'];
 foreach ($array_vaksin as $vaksin){
-    mysqli_query($con, "INSERT INTO `vaksin_sapi` SET `id_sapi`='$id_sapi',`id_vaksin`='$vaksin'");
+   $query = mysqli_query($con, "INSERT INTO `vaksin_sapi` SET `id_sapi`='$id_sapi',`id_vaksin`='$vaksin'");
 }
 }
 $lastId = mysqli_insert_id($con);
